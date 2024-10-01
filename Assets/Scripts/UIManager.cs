@@ -7,9 +7,18 @@ public class UIManager : MonoBehaviour
     {
         pos = Camera.main.transform.position;
     }
+
+    private void OnEnable()
+    {
+        
+    }
     public void OnClick_Reset()
     {
         Debug.Log("Reset");
         Camera.main.transform.position = pos;
+    }
+    public void OnClick_PorpertyId(string id)
+    {
+        GameEvents.PropertySelectionChanged?.Invoke(id);
     }
 }

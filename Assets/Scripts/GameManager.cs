@@ -1,4 +1,6 @@
+using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -6,11 +8,27 @@ public class GameManager : MonoBehaviour
     Dictionary<string, PropertyUnit> _allUnits;
     Dictionary<string, Property> _allProperties;
 
+    [SerializeField] CameraContoller _cameraContoller;
+    [SerializeField] Transform _initialTarget;
+
 
     private void OnEnable()
     {
         _allProperties = new Dictionary<string, Property>();
         _allUnits = new Dictionary<string, PropertyUnit>();
+
+        GameEvents.PropertySelectionChanged += On_PropertySelectionChanged;
+    }
+    private void On_PropertySelectionChanged(string propertyId)
+    {
+        if (_allProperties.ContainsKey(propertyId))
+        {
+            _cameraContoller.UpdateTargetProperty(_allProperties[propertyId]);
+        }
+        else
+        {
+            Debug.Log($"Property with ID : {propertyId}  Not present scene.");
+        }
     }
 
     private void Start()
@@ -25,6 +43,8 @@ public class GameManager : MonoBehaviour
     {
         ClearPropertiesCache();
         ClearPropertyUnitsCache();
+
+        GameEvents.PropertySelectionChanged -= On_PropertySelectionChanged;
     }
 
     private void CachePropertiesInScene(Property[] propertyUnits)

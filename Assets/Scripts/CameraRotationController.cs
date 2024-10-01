@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class CameraRotationController : MonoBehaviour
 {
-    public Transform target;
+    [SerializeField] Transform _target;
     public float rotationSpeed = 0.2f;
     public float minXAngle = -30f;
     public float maxXAngle = 60f;
@@ -12,14 +12,15 @@ public class CameraRotationController : MonoBehaviour
 
     private void Start()
     {
-        if(target == null)
+        if(_target == null)
         {
             Debug.LogError("Target Not Set for CameraRotationController");
         }
     }
 
-    private void Update()
+    public void UpdateRotation(Transform target)
     {
+        _target = target;
         if (Input.touchCount == 1) { 
             var touch = Input.GetTouch(0);
 

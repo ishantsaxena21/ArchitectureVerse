@@ -2,24 +2,25 @@ using UnityEngine;
 
 public class CameraZoomController : MonoBehaviour
 {
-    public Camera _camera;
-    public Transform target;
-    public float zoomSpeed = 0.1f;
-    public float minZoomDistance = 2.0f;
-    public float maxZoomDistance = 25.0f;
+    [SerializeField] Camera _camera;
+    [SerializeField] Transform _target;
+    [SerializeField] float zoomSpeed = 0.1f;
+    [SerializeField] float minZoomDistance = 2.0f;
+    [SerializeField] float maxZoomDistance = 25.0f;
 
     private float currentZoomDistance;
-
+    
     private void Start()
     {
-        if (target == null)
+        if (_target == null)
         {
             Debug.LogError("Target Not Set for CameraZoomController");
         }
-        currentZoomDistance = Vector3.Distance(_camera.transform.position, target.position);
+        currentZoomDistance = Vector3.Distance(_camera.transform.position, _target.position);
     }
-    private void Update()
+    public void UpdateZoom(Transform target)
     {
+        _target = target;
         if(Input.touchCount == 2)
         {
             var touchZero = Input.GetTouch(0);

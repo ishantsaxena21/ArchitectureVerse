@@ -1,30 +1,20 @@
 using System;
-using Unity.Collections;
 using UnityEngine;
 
-[ExecuteAlways]
-public class Property : MonoBehaviour
+namespace AVerse.Models
 {
-    [SerializeField] string _propertyUnitId;
-    [ReadOnly] [SerializeField] GameObject _buildingParentObject;
-
-    public string PropertyId { get { return _propertyUnitId; } }
-    public GameObject BuildingParentObject { set { _buildingParentObject = value; } } 
-    private void Start()
+    public class Property : MonoBehaviour
     {
-        FindFirstChild();
+        [SerializeField] string _name;
+        [SerializeField] string _id;
+        [SerializeField] PropertyType _type;
+        [SerializeField] bool _isAvailable;
+        public string Id { get { return _id; } }
+        public string Name { get { return _name; } }
+        public PropertyType Type { get { return _type; } }
+        public bool IsAvailable { get { return _isAvailable; } }
     }
 
-    private void FindFirstChild()
-    {
-        if (transform.childCount > 0)
-        {
-            // Get the first child GameObject
-            _buildingParentObject = transform.GetChild(0).gameObject;
-        }
-        else
-        {
-            Debug.LogWarning($"No children found for {this.name} GameObject.");
-        }
-    }
+    [Serializable]
+    public enum PropertyType { VILLA, BUILDING }
 }

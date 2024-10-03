@@ -19,7 +19,8 @@ MonoBehaviour:
     rid: 2379749480819064834
   m_Scenes:
   - m_enabled: 1
-    m_path: Assets/Scenes/SampleScene.unity
+    m_path: Assets/ExternalAssets/SimplePoly City - Low Poly Assets/Demo/SimplePoly
+      City - Low Poly Assets_Demo Scene.unity
   m_ScriptingDefines: []
   m_PlayerSettingsYaml:
     m_Settings:

@@ -1,38 +1,35 @@
 using UnityEngine;
 
-[ExecuteInEditMode] // Ensures the script runs in both Edit Mode and Play Mode
+//[ExecuteInEditMode] // Ensures the script runs in both Edit Mode and Play Mode
+[RequireComponent (typeof(Canvas))]
 public class FaceCamera : MonoBehaviour
 {
-    public Camera mainCamera; // Reference to the camera (drag in the Inspector)
+    [SerializeField] Camera focusCamera; // Reference to the camera (drag in the Inspector)
+    Canvas _canvas;
 
-    void Start()
+    private void Awake()
     {
-        // If no camera is assigned, default to the main camera
-        if (mainCamera == null)
-        {
-            mainCamera = Camera.main;
-        }
+        _canvas = GetComponent<Canvas>();
     }
-
     void LateUpdate()
     {
         FaceTowardsCamera();
     }
 
-    // This runs in the editor when something changes in the inspector
-    void OnValidate()
-    {
-        // Ensure it updates even when modifying in the editor
-        FaceTowardsCamera();
-    }
-
-    // Method to rotate the canvas to face the camera
     void FaceTowardsCamera()
     {
-        if (mainCamera != null)
-        {
-            transform.LookAt(transform.position + mainCamera.transform.rotation * Vector3.forward,
-                             mainCamera.transform.rotation * Vector3.up);
+        focusCamera = Camera.main;
+        _canvas.worldCamera = focusCamera;        
+        if (focusCamera == null)
+        { 
+            Debug.LogError($"No Camera found for gameObject : {transform.parent.name}");
+            return;
         }
+        Vector3 cameraPosition = focusCamera.transform.position;
+        cameraPosition.y = transform.position.y;
+        Vector3 directionToCamera = transform.position - cameraPosition;
+        transform.rotation = Quaternion.LookRotation(directionToCamera);
+
+        //transform.LookAt(transform.position + focusCamera.transform.rotation * Vector3.forward, focusCamera.transform.rotation * Vector3.up);
     }
 }

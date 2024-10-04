@@ -44,7 +44,7 @@ Camera:
   m_GameObject: {fileID: 8093173057632687283}
   m_Enabled: 1
   serializedVersion: 2
-  m_ClearFlags: 4
+  m_ClearFlags: 1
   m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
   m_projectionMatrixMode: 1
   m_GateFitMode: 2
@@ -71,7 +71,7 @@ Camera:
   field of view: 60
   orthographic: 0
   orthographic size: 5
-  m_Depth: -1
+  m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
     m_Bits: 4294967295
@@ -152,9 +152,3 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 591468790072138946}
   _target: {fileID: 0}
-  rotationSpeed: 0.2
-  minXAngle: -30
-  maxXAngle: 60
-  zoomSpeed: 0.1
-  minZoomDistance: 2
-  maxZoomDistance: 25

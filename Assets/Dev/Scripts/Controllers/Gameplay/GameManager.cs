@@ -60,8 +60,12 @@ namespace AVerse.Controllers.Gameplay
         {
             if(_currentTarget.Id == property.Id)
             {
-                UIManager.Instance.ShowUnitDetails(property);
+                UIManager.Instance.TriggerUnitDetails(property, true);
                 return;
+            }
+            else
+            {
+                UIManager.Instance.TriggerUnitDetails(property, false);
             }
             if (_allProperties.ContainsKey(property.Id))
             {
@@ -71,6 +75,16 @@ namespace AVerse.Controllers.Gameplay
                 }
                 _allProperties[property.Id].LoadProperty();
                 _currentTarget = property;
+
+                if(property.Type == PropertyType.BUILDING)
+                {
+                    UIManager.Instance.ShowTopFilter(property);
+                }
+                else if (property.Type == PropertyType.VILLA)
+                {
+                    UIManager.Instance.HideTopFilter(property);
+                }
+
                 //TODO: _cameraContoller.UpdateTarget(_allProperties[propertyId].BoundingBox.transform);
             }
             else

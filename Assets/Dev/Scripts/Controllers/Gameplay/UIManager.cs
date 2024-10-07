@@ -8,7 +8,7 @@ namespace AVerse.Controllers.Gameplay
         static UIManager _instance;
         public static UIManager Instance { get { return _instance; } }
 
-        [SerializeField] GameObject _unitDetailsUI;
+        [SerializeField] GameObject _unitDetailsUI, _topFilterUI;
 
         private void Awake()
         {
@@ -29,19 +29,24 @@ namespace AVerse.Controllers.Gameplay
             Camera.main.transform.position = pos;
         }
 
-        public void ShowUnitDetails(Property property)
+        public void TriggerUnitDetails(Property property, bool show)
         {
-            _unitDetailsUI.SetActive(true);
+            if (show) _unitDetailsUI.SetActive(show);
+            else OnClick_CloseUnitDetails();
         }
 
+        public void ShowTopFilter(Property property)
+        {
+            _topFilterUI.SetActive(true);
+        }
+        public void HideTopFilter(Property property)
+        {
+            _topFilterUI.GetComponent<Animator>().SetTrigger(GameConstants.ANIMATION_TRIGGER_CLOSE);
+        }
         public void OnClick_CloseUnitDetails()
         {
-            _unitDetailsUI.GetComponent<Animator>().SetTrigger("Close");
+            _unitDetailsUI.GetComponent<Animator>().SetTrigger(GameConstants.ANIMATION_TRIGGER_CLOSE);
         }
-        //public void OnClick_PropertyButton(string propertyId)
-        //{
-        //    GameEvents.PropertySelectionChanged(propertyId);
-        //}
         public void Dummy()
         {
             print("I was clicked");

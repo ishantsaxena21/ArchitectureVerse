@@ -152,3 +152,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _camera: {fileID: 591468790072138946}
   _target: {fileID: 0}
+  _invertY: 1

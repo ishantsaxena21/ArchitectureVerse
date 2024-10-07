@@ -6,7 +6,8 @@ namespace AVerse.Controllers.Gameplay
     public class CameraContoller : MonoBehaviour
     {
         [SerializeField] Camera _camera;
-        [SerializeField] Transform _target;
+        [SerializeField] Transform _target; //Bounding Box -> Initialized By PropertyController in Awake
+        [SerializeField] bool _invertX;
         public Camera Camera { get { return _camera; } }
 
         private Vector2 previousTouchPosition;
@@ -53,6 +54,8 @@ namespace AVerse.Controllers.Gameplay
                     float rotX = touchDelta.y * _rotationModel.rotationSpeed;
                     float rotY = touchDelta.x * _rotationModel.rotationSpeed;
 
+                    rotX *= _invertX? -1:1;
+                    
                     float newXAngle = Mathf.Clamp(currentAngle + rotX, _rotationModel.minXAngle, _rotationModel.maxXAngle);
 
                     if (newXAngle != currentAngle)

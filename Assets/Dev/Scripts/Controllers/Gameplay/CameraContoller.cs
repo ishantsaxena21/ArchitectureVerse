@@ -1,5 +1,7 @@
 using AVerse.Models;
+using System;
 using UnityEngine;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 namespace AVerse.Controllers.Gameplay
 {
@@ -10,7 +12,7 @@ namespace AVerse.Controllers.Gameplay
         [SerializeField] bool _invertX;
         public Camera Camera { get { return _camera; } }
 
-        private Vector2 previousTouchPosition;
+        private Vector2 previousTouchPosition, previousMouseTouchPos;
         private float currentAngle = 0f;
 
         private float currentZoomDistance;
@@ -30,15 +32,62 @@ namespace AVerse.Controllers.Gameplay
             _zoomModel = zoomModel;
         }
 
-        
-
         private void Update()
         {
-            UpdateZoom(_target);
-            UpdateRotation(_target);
+#if UNITY_WEBGL || UNITY_STANDALONE_WIN || UNITY_EDITOR
+            HandleMouseInputs();
+#else
+            HandleTouchInputs();
+#endif       
         }
 
-        public void UpdateRotation(Transform target)
+        private void HandleMouseInputs()
+        {
+            UpdateMouseZoom(_target);
+            UpdateMouseRotation(_target);
+        }
+        private void UpdateMouseZoom(Transform target)
+        {
+            float scrollInput = Input.GetAxis("Mouse ScrollWheel");
+            currentZoomDistance -= scrollInput * _zoomModel.zoomSpeed * 100;
+            currentZoomDistance = Mathf.Clamp(currentZoomDistance, _zoomModel.minZoomDistance, _zoomModel.maxZoomDistance);
+            _camera.transform.position = target.position - _camera.transform.forward * currentZoomDistance;
+        }
+        public void UpdateMouseRotation(Transform target)
+        {
+            if (Input.GetMouseButtonDown(1))
+            {
+                previousMouseTouchPos = target.position;
+            }
+            else if (Input.GetMouseButton(1))
+            {
+                Vector2 mouseDelta = (Vector2)Input.mousePosition - previousMouseTouchPos;
+                float rotationX = mouseDelta.y*_rotationModel.rotationSpeed;
+                float rotationY = mouseDelta.x*_rotationModel.rotationSpeed;
+
+                rotationX *= _invertX ? -1 : 1;
+
+                float newXAngle = Mathf.Clamp(currentAngle + rotationX, _rotationModel.minXAngle, _rotationModel.maxXAngle);
+
+                if (newXAngle != currentAngle)
+                {
+                    transform.RotateAround(target.position, transform.right, newXAngle - currentAngle);
+                    currentAngle = newXAngle;
+                }
+
+                transform.RotateAround(target.position, Vector3.up, rotationY);
+                previousMouseTouchPos = Input.mousePosition;
+            }
+
+        }
+        
+
+        private void HandleTouchInputs()
+        {
+            UpdateTouchZoom(_target);
+            UpdateTouchRotation(_target);
+        }
+        public void UpdateTouchRotation(Transform target)
         {
             if (Input.touchCount == 1)
             {
@@ -69,7 +118,7 @@ namespace AVerse.Controllers.Gameplay
                 }
             }
         }
-        public void UpdateZoom(Transform target)
+        public void UpdateTouchZoom(Transform target)
         {
             if (Input.touchCount == 2)
             {

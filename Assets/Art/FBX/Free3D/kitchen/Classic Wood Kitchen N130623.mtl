@@ -1,0 +1,87 @@
+# 
+# Wavefront material file
+# Converted by the DEEP Exploration  Deep Exploration 6.3 x64 6.3.3.8069
+# Right Hemisphere, LTD
+# http://www.righthemisphere.com/
+# 
+
+newmtl Wood
+Ka 0.647059 0.580392 0.529412
+Kd 0.647059 0.580392 0.529412
+Ks 0.929412 0.886275 0.733333
+illum 2
+Ns 181.019
+map_Kd WoodFGHJ.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Glass
+Ka 0.921569 0.980392 0.964706
+Kd 0.835294 0.968628 0.937255
+Ks 1 1 1
+illum 2
+Ns 181.019
+d 0.1
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Marble
+Ka 0.941177 0.913726 0.819608
+Kd 0.941177 0.913726 0.819608
+Ks 1 1 1
+illum 2
+Ns 181.019
+map_Kd kalahari.png
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Metal_Bronz
+Ka 0.694118 0.647059 0.584314
+Kd 0.321569 0.172549 0.054902
+Ks 1 1 1
+illum 2
+Ns 724.077
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 
+
+newmtl Plastic
+Ka 0.941177 0.913726 0.819608
+Kd 0.941177 0.913726 0.819608
+Ks 1 1 1
+illum 2
+Ns 181.019
+map_Kd 
+map_bump 
+bump 
+map_opacity 
+map_d 
+refl 
+map_kS 
+map_kA 
+map_Ns 

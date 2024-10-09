@@ -1,6 +1,7 @@
 using AVerse.Controllers.Gameplay;
 using AVerse.Extensions;
 using AVerse.Models;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -23,10 +24,13 @@ namespace AVerse.Controllers.Behaviors
         [SerializeField] CameraZoomModel _zoomModel;
         [SerializeField] UnitsController _unitsController;
 
+        float _transitionProgress;
+        bool _isTransitioning;
         public BoundaryDrawer BoundingBox { get { return _boundingBox; } }
         public Property PropertyDetails {  get { return _propertyDetails; } }
         public string PropertyId { get { return _propertyDetails.Id; } }
         public GameObject BuildingParentObject { set { _buildingParentObject = value; } }
+        public Transform CameraTransform { get { return _cameraController.transform; } }
 
         private void Awake()
         {
@@ -99,5 +103,28 @@ namespace AVerse.Controllers.Behaviors
             _cameraController.gameObject.SetActive(false);
             _unitsController.gameObject.SetActive(false);
         }
+        //public void StartTransition(Transform startTransform)
+        //{
+        //    _transitionModel.startTransform = startTransform;
+        //    _transitionModel.endTransform = transform;
+        //    //StartCoroutine(Transition(_transitionModel));
+        //}
+
+        //IEnumerator Transition(CameraTransitionModel transitionModel)
+        //{
+        //    if (!_isTransitioning)
+        //    {
+        //        _transitionProgress += Time.deltaTime / transitionModel.transitionDuration;
+        //        while (_transitionProgress < 1.0f)
+        //        {
+        //            transform.position = Vector3.Lerp(transitionModel.startTransform.position, transitionModel.endTransform.position, _transitionProgress);
+        //            transform.rotation = Quaternion.Slerp(transitionModel.startTransform.rotation, transitionModel.endTransform.rotation, _transitionProgress);
+        //            yield return null;
+        //        }
+        //        _transitionProgress = 1.0f;
+        //        _isTransitioning = false;
+        //        GameEvents.TransitionCompleted(_propertyDetails);
+        //    }
+        //}
     }
 }

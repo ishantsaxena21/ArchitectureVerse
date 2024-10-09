@@ -5,4 +5,5 @@ using UnityEngine;
 public static class GameEvents
 {
     public static Action<Property> PropertySelectionChanged;
+    public static Action TransitionCompleted;
 }

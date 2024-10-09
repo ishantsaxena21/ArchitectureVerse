@@ -1,4 +1,5 @@
 using AVerse.Models;
+using NUnit.Framework;
 using UnityEngine;
 
 namespace AVerse.Controllers.Gameplay
@@ -8,6 +9,11 @@ namespace AVerse.Controllers.Gameplay
         [SerializeField] Camera _camera;
         [SerializeField] Transform _target; //Bounding Box -> Initialized By PropertyController in Awake
         [SerializeField] bool _invertX;
+
+
+        [SerializeField] Transform startTransform;
+        [SerializeField] Transform endTransform;
+        
         public Camera Camera { get { return _camera; } }
 
         private Vector2 previousTouchPosition;
@@ -92,4 +98,6 @@ namespace AVerse.Controllers.Gameplay
             }
         }
     }
+
+    
 }

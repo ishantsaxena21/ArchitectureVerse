@@ -23,6 +23,7 @@ namespace AVerse.Controllers.Gameplay
             //_allUnits = new Dictionary<string, PropertyUnit>();
 
             GameEvents.PropertySelectionChanged += On_PropertySelectionChanged;
+            GameEvents.TransitionCompleted += On_TransitionCompleted;
         }
 
         private void Start()
@@ -41,6 +42,7 @@ namespace AVerse.Controllers.Gameplay
             //ClearUnitsCache();
 
             GameEvents.PropertySelectionChanged -= On_PropertySelectionChanged;
+            GameEvents.TransitionCompleted -= On_TransitionCompleted;
         }
 
         private void CachePropertiesInScene(PropertyController[] properties)
@@ -73,17 +75,13 @@ namespace AVerse.Controllers.Gameplay
                 {
                     propertyController.UnloadProperty();
                 }
-                _allProperties[property.Id].LoadProperty();
-                _currentTarget = property;
+                UniversalTranisitionCamera.Instance.StartTransition(
+                    _currentTarget.GetComponentInParent<PropertyController>().CameraTransform,
+                    _allProperties[property.Id].CameraTransform);
 
-                if(property.Type == PropertyType.BUILDING)
-                {
-                    UIManager.Instance.ShowTopFilter(property);
-                }
-                else if (property.Type == PropertyType.VILLA)
-                {
-                    UIManager.Instance.HideTopFilter(property);
-                }
+                //_allProperties[property.Id].StartTransition();
+                _currentTarget = property;
+                //On_TransitionCompleted(property);
 
                 //TODO: _cameraContoller.UpdateTarget(_allProperties[propertyId].BoundingBox.transform);
             }
@@ -92,6 +90,20 @@ namespace AVerse.Controllers.Gameplay
                 Debug.Log($"Property with ID : {property.Id}  Not present scene.");
             }
             
+        }
+
+        private void On_TransitionCompleted()
+        {
+            _allProperties[_currentTarget.Id].LoadProperty();
+
+            if (_currentTarget.Type == PropertyType.BUILDING)
+            {
+                UIManager.Instance.ShowTopFilter(_currentTarget);
+            }
+            else if (_currentTarget.Type == PropertyType.VILLA)
+            {
+                UIManager.Instance.HideTopFilter(_currentTarget);
+            }
         }
 
         //private void CacheUnitsInScene(PropertyUnit[] units)

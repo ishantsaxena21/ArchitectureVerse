@@ -1,5 +1,6 @@
 using AVerse.Models;
 using UnityEngine;
+using System.Collections;
 
 namespace AVerse.Controllers.Gameplay
 {
@@ -8,7 +9,7 @@ namespace AVerse.Controllers.Gameplay
         static UIManager _instance;
         public static UIManager Instance { get { return _instance; } }
 
-        [SerializeField] GameObject _unitDetailsUI, _topFilterUI;
+        [SerializeField] GameObject _unitDetailsUI, _topFilterUI, _queryForm;
 
         private void Awake()
         {
@@ -35,6 +36,16 @@ namespace AVerse.Controllers.Gameplay
             else OnClick_CloseUnitDetails();
         }
 
+        public void OnClick_BookNowOnUnitDetails(){
+            StartCoroutine(BookNowMenu_Coroutine());
+        }
+        public IEnumerator BookNowMenu_Coroutine(){
+            OnClick_CloseUnitDetails();
+            yield return new WaitForSeconds(0.5f);
+            _queryForm.SetActive(true);
+
+        }
+
         public void ShowTopFilter(Property property)
         {
             _topFilterUI.SetActive(true);
@@ -46,6 +57,10 @@ namespace AVerse.Controllers.Gameplay
         public void OnClick_CloseUnitDetails()
         {
             _unitDetailsUI.GetComponent<Animator>().SetTrigger(GameConstants.ANIMATION_TRIGGER_CLOSE);
+        }
+        public void OnClick_CloseQueryForm()
+        {
+            _queryForm.GetComponent<Animator>().SetTrigger(GameConstants.ANIMATION_TRIGGER_CLOSE);
         }
         public void Dummy()
         {

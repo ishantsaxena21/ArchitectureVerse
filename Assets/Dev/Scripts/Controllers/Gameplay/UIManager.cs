@@ -1,6 +1,7 @@
 using AVerse.Models;
 using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 
 namespace AVerse.Controllers.Gameplay
 {
@@ -9,21 +10,20 @@ namespace AVerse.Controllers.Gameplay
         static UIManager _instance;
         public static UIManager Instance { get { return _instance; } }
 
-        [SerializeField] GameObject _unitDetailsUI, _topFilterUI, _queryForm;
+        [SerializeField] GameObject _unitDetailsUI, _topFilterUI, _queryForm, _2DImage;
 
         private void Awake()
         {
             _instance = this;
         }
         private Vector3 pos;
-        private void Start()
-        {
-        }
 
         private void OnEnable()
         {
 
         }
+
+        #region Main Scene Callbacks
         public void OnClick_Reset()
         {
             Debug.Log("Reset");
@@ -36,14 +36,19 @@ namespace AVerse.Controllers.Gameplay
             else OnClick_CloseUnitDetails();
         }
 
-        public void OnClick_BookNowOnUnitDetails(){
-            StartCoroutine(BookNowMenu_Coroutine());
+        public void OnClick_MainSceneBookNow(){
+            StartCoroutine(MainSceneBookNowMenu_Coroutine());
         }
-        public IEnumerator BookNowMenu_Coroutine(){
+        public IEnumerator MainSceneBookNowMenu_Coroutine(){
             OnClick_CloseUnitDetails();
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             _queryForm.SetActive(true);
 
+        }
+
+        public void OnClick_MainMenuExploreUnits()
+        {
+            SceneManager.LoadScene(1);
         }
 
         public void ShowTopFilter(Property property)
@@ -62,10 +67,32 @@ namespace AVerse.Controllers.Gameplay
         {
             _queryForm.GetComponent<Animator>().SetTrigger(GameConstants.ANIMATION_TRIGGER_CLOSE);
         }
+
+        #endregion
+
+        #region FloorView Scene Callbacks
+
+        public void OnClick_ExploreSceneBack()
+        {
+            SceneManager.LoadScene(0);
+        }
+        public void OnClick_ExploreScene2DView()
+        {
+           _2DImage.SetActive(true);
+        }
+        public void OnClick_ExploreSceneClose2DView()
+        {
+            _2DImage.SetActive(false);
+        }
+        public void OnClick_ExploreSceneBookNow()
+        {
+            _queryForm.SetActive(true);
+        }
+        #endregion
         public void Dummy()
         {
             print("I was clicked");
         }
-
+        
     }
 }

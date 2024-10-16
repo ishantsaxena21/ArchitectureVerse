@@ -263,7 +263,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3243952202316650080}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AVerse.Controllers.Gameplay.UIManager, Assembly-CSharp
+        m_MethodName: OnClick_MainMenuExploreUnits
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &9028653701239079859
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -983,7 +995,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2962912525638602455
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1678,7 +1690,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 3073223927512080588}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: AVerse.Controllers.Gameplay.UIManager, Assembly-CSharp
+        m_MethodName: OnClick_MainSceneBookNow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &2329953676672874480
 MonoBehaviour:
   m_ObjectHideFlags: 0

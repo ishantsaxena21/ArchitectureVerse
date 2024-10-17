@@ -171,6 +171,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 32000906507673630, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: _unitsController
+      value: 
+      objectReference: {fileID: 3970545031342746986}
+    - target: {fileID: 32000906507673630, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: _rotationModel.minXAngle
       value: -10
       objectReference: {fileID: 0}
@@ -182,6 +186,10 @@ PrefabInstance:
       propertyPath: _zoomModel.minZoomDistance
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 1791108969722757319, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: _target
+      value: 
+      objectReference: {fileID: 1446503064177613260}
     - target: {fileID: 1910076023464703218, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: m_LocalPosition.z
       value: -0.68
@@ -197,6 +205,14 @@ PrefabInstance:
     - target: {fileID: 3659110167703160013, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: m_Name
       value: -PropertyContainer_Villa
+      objectReference: {fileID: 0}
+    - target: {fileID: 3911621194896955979, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4641579714063532769, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4945846458577359866, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: m_LocalScale.x
@@ -274,6 +290,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9121834659938559157, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: m_text
+      value: Villa
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -282,8 +302,24 @@ PrefabInstance:
       addedObject: {fileID: 2782628971186715721}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+--- !u!4 &1446503064177613260 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4945846458577359866, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+  m_PrefabInstance: {fileID: 5814199866098879030}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2006444813338798595 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5433730477415030837, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
   m_PrefabInstance: {fileID: 5814199866098879030}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3970545031342746986 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7469811873216653148, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+  m_PrefabInstance: {fileID: 5814199866098879030}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 86243e8650b1aaf43833c8d912c04ed1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

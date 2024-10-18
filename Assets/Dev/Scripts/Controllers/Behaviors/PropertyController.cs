@@ -17,12 +17,14 @@ namespace AVerse.Controllers.Behaviors
 
         //Unity Objects
         BoundaryDrawer _boundingBox;
+        [SerializeField] Canvas _canvas;
         [SerializeField] Button _buttonPropertyHover;
         [SerializeField] CameraContoller _cameraController;
         [SerializeField] GameObject _buildingParentObject;
         [SerializeField] CameraRotationModel _rotationModel;
         [SerializeField] CameraZoomModel _zoomModel;
         [SerializeField] UnitsController _unitsController;
+        [SerializeField] bool _requireCanvas;
 
         float _transitionProgress;
         bool _isTransitioning;
@@ -44,7 +46,14 @@ namespace AVerse.Controllers.Behaviors
                 Debug.LogError($"No Property Object found for gameObject : {name}");
                 return;
             }
-            
+
+            _canvas = GetComponentInChildren<Canvas>(true);
+            if (_canvas == null)
+            {
+                Debug.LogError($"No Canvas found for gameObject : {name}");
+                return;
+            }
+
             _boundingBox = GetComponentInChildren<BoundaryDrawer>(true);
             if (_boundingBox == null)
             {
@@ -82,7 +91,9 @@ namespace AVerse.Controllers.Behaviors
         }
         public void SetUp()
         {
+            _canvas.gameObject.SetActive(_requireCanvas);
             _buttonPropertyHover.GetComponentInChildren<TextMeshProUGUI>().SetText(_propertyDetails.Name);
+            _unitsController.transform.SetPositionAndRotation(_propertyDetails.transform.position, _propertyDetails.transform.rotation);
             UnloadProperty();
         }
 
@@ -96,6 +107,7 @@ namespace AVerse.Controllers.Behaviors
         {
             _cameraController.gameObject.SetActive(true);
             _unitsController.gameObject.SetActive(_propertyDetails.IsAvailable);
+            
         }
 
         public void UnloadProperty()

@@ -13,8 +13,18 @@ namespace AVerse.Models
         public string Name { get { return _name; } }
         public PropertyType Type { get { return _type; } }
         public bool IsAvailable { get { return _isAvailable; } }
+
+        private void Awake()
+        {
+            var available = UnityEngine.Random.Range(0, 2);
+            _id = "U" + UnityEngine.Random.Range(0, 1000000) + "" + UnityEngine.Random.Range(0, 1000000);
+            _isAvailable = available >= 1 ? true : false ;
+        }
     }
 
     [Serializable]
     public enum PropertyType { VILLA, BUILDING }
+
+    
+
 }

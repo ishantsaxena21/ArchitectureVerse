@@ -49,7 +49,11 @@ namespace AVerse.Controllers.Gameplay
         {
             if (_allProperties == null) _allProperties = new Dictionary<string, PropertyController>();
 
-            foreach (var property in properties) _allProperties.Add(property.PropertyId, property);
+            foreach (var property in properties)
+            {
+
+                _allProperties.Add(property.PropertyId, property);
+            }
         }
 
         private void ClearPropertiesCache()

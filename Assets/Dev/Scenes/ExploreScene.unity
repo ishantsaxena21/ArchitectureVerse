@@ -1441,6 +1441,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 32000906507673630, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: _canvas
+      value: 
+      objectReference: {fileID: 1968062508}
+    - target: {fileID: 32000906507673630, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: _requireCanvas
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 32000906507673630, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: _unitsController
       value: 
       objectReference: {fileID: 1968062506}
@@ -1456,6 +1464,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 359842936676774863, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -83.02
+      objectReference: {fileID: 0}
+    - target: {fileID: 359842936676774863, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 359842936676774863, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 6.38
+      objectReference: {fileID: 0}
     - target: {fileID: 1791108969722757319, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: _target
       value: 
@@ -1470,7 +1490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3911621194896955979, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4945846458577359866, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: m_LocalScale.x
@@ -1536,6 +1556,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6418723582119443948, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8914036823025006684, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
       propertyPath: m_ClearFlags
       value: 2
@@ -1594,6 +1618,11 @@ MonoBehaviour:
 --- !u!4 &1968062507 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4945846458577359866, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
+  m_PrefabInstance: {fileID: 1968062503}
+  m_PrefabAsset: {fileID: 0}
+--- !u!223 &1968062508 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 600328949770302012, guid: 669a80a8d03c4474ea81a64c36faa8e6, type: 3}
   m_PrefabInstance: {fileID: 1968062503}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &2087118813

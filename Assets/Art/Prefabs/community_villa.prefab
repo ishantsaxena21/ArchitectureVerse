@@ -441,7 +441,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  - {fileID: 2100000, guid: e826232c5186e7242b5c3118f39f95c1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -763,7 +763,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2807136002906498744, guid: bb5520364031941499e432ec206713b6, type: 3}
+  - {fileID: 2100000, guid: 046e9e976810a2b499e3eaa4b99316cc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1261,6 +1261,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: community_villa
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bb5520364031941499e432ec206713b6, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -1539,6 +1543,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -6652725513331149018, guid: 71af2c943a6655b48b6b2d2fd3010673, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7a8091b5953d2b548affed4949418fdd, type: 2}
     - target: {fileID: 919132149155446097, guid: 71af2c943a6655b48b6b2d2fd3010673, type: 3}
       propertyPath: m_Name
       value: Car

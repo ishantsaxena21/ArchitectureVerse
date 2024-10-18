@@ -3,7 +3,97 @@ guid: bb5520364031941499e432ec206713b6
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Below terrace_126Mat.001
+    second: {fileID: 2100000, guid: 055bf5b42188d72459bde5659a8720c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bottom floor_3Mat.001
+    second: {fileID: 2100000, guid: b707ae8361eb76741b1a1d87cf2dac50, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Chimney_18Mat.001
+    second: {fileID: 2100000, guid: 046e9e976810a2b499e3eaa4b99316cc, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Dining_Assembly_21_29Mat.001
+    second: {fileID: 2100000, guid: 321f305d39def514a9f47ac6613a8abd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Floor gr fl_124Mat.001
+    second: {fileID: 2100000, guid: 0519707d27470764cac0ccb5c1cc9108, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Flower_856Mat.001
+    second: {fileID: 2100000, guid: 7bafe10d054e1ae4ea36404240b9e410, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Frame_105Mat.001
+    second: {fileID: 2100000, guid: aa3baef675906f8479e3af313d62b6fe, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass_1Mat.001
+    second: {fileID: 2100000, guid: 9535a2b9ee7bbe241b745bfea0178af0, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Kitchen_Assembly_13_129Mat.001
+    second: {fileID: 2100000, guid: 763be1bdf50133145b75c91b0be5cd01, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Living_Assemblies_05_453Mat.001
+    second: {fileID: 2100000, guid: e19f2cf3983ca7e4381ba4a25161155a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Office_Assemblies_18_269Mat.001
+    second: {fileID: 2100000, guid: 21669820d7d526242a524070c7a86ade, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Piano_03_668Mat.001
+    second: {fileID: 2100000, guid: 7079d14c68fc710409c4bcbe9208307e, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Pictures and statue_655Mat.001
+    second: {fileID: 2100000, guid: 17b0c4aaedcbb9b4ab619d9988dbba85, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Terrace_115Mat.001
+    second: {fileID: 2100000, guid: 655e38d6a6c272a42b542e19be033cc3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls Outside and 1st floor_116Mat.001
+    second: {fileID: 2100000, guid: ab42f9078168eba4da18b8a30fa2f1f5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Walls gr floor 1_100Mat.001
+    second: {fileID: 2100000, guid: 4c4c567da72b3464281dece5c96acabd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: curtains_849Mat.001
+    second: {fileID: 2100000, guid: 9aa0cabce7346924f998d1a77d6e26ff, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: walls backside space_108Mat.001
+    second: {fileID: 2100000, guid: 71ed6f835afbb144ca84ac98f4eb92bb, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

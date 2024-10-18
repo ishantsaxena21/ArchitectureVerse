@@ -3,7 +3,17 @@ guid: 43b8d0fa2a0b8014e94c1f39c7829987
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: GFX
+    second: {fileID: 2100000, guid: 7a8091b5953d2b548affed4949418fdd, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Transparent
+    second: {fileID: 2100000, guid: be9f7f3fd2a6b8b45b3396485a30f496, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0

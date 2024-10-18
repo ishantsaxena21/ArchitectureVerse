@@ -1,4 +1,7 @@
-public static class GameConstants
+namespace AVerse
 {
-    public const string ANIMATION_TRIGGER_CLOSE = "Close";
+    public static class GameConstants
+    {
+        public const string ANIMATION_TRIGGER_CLOSE = "Close";
+    }
 }

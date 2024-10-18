@@ -1,9 +1,12 @@
 using AVerse.Models;
 using System;
-using UnityEngine;
 
-public static class GameEvents
+namespace AVerse
 {
-    public static Action<Property> PropertySelectionChanged;
-    public static Action TransitionCompleted;
+    public static class GameEvents
+    {
+        public static Action<Property> PropertySelectionChanged;
+        public static Action TransitionCompleted;
+    }
+
 }

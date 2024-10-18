@@ -1,0 +1,67 @@
+[
+  {
+    "attributes": {
+      "type": "Unit__c",
+      "url": "/services/data/v62.0/sobjects/Unit__c/a01d2000005EGtKAAW"
+    },
+    "Id": "a01d2000005EGtKAAW",
+    "Name": "IN3U1",
+    "Available_For_Mobile_App__c": true,
+    "Unit_Status__c": "Booked",
+    "Location_Code__c": "IN3U1",
+    "Selling_Price__c": 34000,
+    "Purpose__c": "Sales",
+    "Bedrooms__c": 2,
+    "Unit_Type__c": "Villa",
+    "Total_Area__c": 2388,
+    "Additional_Area__c": 140,
+    "Number_of_Parkings__c": 3,
+    "Business_Unit__c": "a05d2000001Gxl7AAC",
+    "Floor__c": "a08d2000001ZfEDAA0",
+    "Project__c": "a00d2000003SMgbAAG",
+    "Building__c": "a07d2000001f1ndAAA",
+    "Bank__c": "a04d200000069TdAAI",
+    "Start_Date__c": "2024-08-02",
+    "End_Date__c": "2026-08-21",
+    "Business_Unit__r": {
+      "attributes": {
+        "type": "Business_Unit__c",
+        "url": "/services/data/v62.0/sobjects/Business_Unit__c/a05d2000001Gxl7AAC"
+      },
+      "Id": "a05d2000001Gxl7AAC",
+      "Name": "IN3"
+    },
+    "Floor__r": {
+      "attributes": {
+        "type": "Floor__c",
+        "url": "/services/data/v62.0/sobjects/Floor__c/a08d2000001ZfEDAA0"
+      },
+      "Id": "a08d2000001ZfEDAA0",
+      "Name": "Floor 1"
+    },
+    "Project__r": {
+      "attributes": {
+        "type": "Project__c",
+        "url": "/services/data/v62.0/sobjects/Project__c/a00d2000003SMgbAAG"
+      },
+      "Id": "a00d2000003SMgbAAG",
+      "Name": "IN3 Horizon"
+    },
+    "Building__r": {
+      "attributes": {
+        "type": "Building__c",
+        "url": "/services/data/v62.0/sobjects/Building__c/a07d2000001f1ndAAA"
+      },
+      "Id": "a07d2000001f1ndAAA",
+      "Name": "IN3 Tower 1"
+    },
+    "Bank__r": {
+      "attributes": {
+        "type": "Bank__c",
+        "url": "/services/data/v62.0/sobjects/Bank__c/a04d200000069TdAAI"
+      },
+      "Id": "a04d200000069TdAAI",
+      "Name": "ENBD"
+    }
+  }
+]

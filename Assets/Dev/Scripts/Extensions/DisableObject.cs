@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisableObject : MonoBehaviour
+namespace AVerse.Extensions
 {
-    public void DisableGameObject()
+    public class DisableObject : MonoBehaviour
     {
-        gameObject.SetActive(false);
+        public void DisableGameObject()
+        {
+            gameObject.SetActive(false);
+        }
     }
 }

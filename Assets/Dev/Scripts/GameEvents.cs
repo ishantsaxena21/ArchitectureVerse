@@ -7,6 +7,7 @@ namespace AVerse
     {
         public static Action<Property> PropertySelectionChanged;
         public static Action TransitionCompleted;
+        public static Action<bool> ToggleUI;
     }
 
 }

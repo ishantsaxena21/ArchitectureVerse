@@ -1,6 +1,7 @@
 using AVerse.Controllers.Gameplay;
 using AVerse.Extensions;
 using AVerse.Models;
+using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -35,8 +36,18 @@ namespace AVerse.Controllers.Behaviors
         public Transform CameraTransform { get { return _cameraController.transform; } }
 
         private void Awake()
-        {
+        {           
             Initialize();
+        }
+
+        private void OnEnable()
+        {
+            GameEvents.ToggleUI += HideUI;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.ToggleUI -= HideUI;
         }
         private void Initialize()
         {
@@ -106,37 +117,29 @@ namespace AVerse.Controllers.Behaviors
         public void LoadProperty()
         {
             _cameraController.gameObject.SetActive(true);
-            _unitsController.gameObject.SetActive(_propertyDetails.IsAvailable);
+            _unitsController.gameObject.SetActive(false);
             
         }
 
         public void UnloadProperty()
         {
             _cameraController.gameObject.SetActive(false);
-            _unitsController.gameObject.SetActive(false);
+            ShowAvailability(true);
         }
-        //public void StartTransition(Transform startTransform)
-        //{
-        //    _transitionModel.startTransform = startTransform;
-        //    _transitionModel.endTransform = transform;
-        //    //StartCoroutine(Transition(_transitionModel));
-        //}
+        private void HideUI(bool isEnabled)
+        {
+            _canvas.gameObject.SetActive(isEnabled);
+            ShowAvailability(isEnabled);
+        }
 
-        //IEnumerator Transition(CameraTransitionModel transitionModel)
-        //{
-        //    if (!_isTransitioning)
-        //    {
-        //        _transitionProgress += Time.deltaTime / transitionModel.transitionDuration;
-        //        while (_transitionProgress < 1.0f)
-        //        {
-        //            transform.position = Vector3.Lerp(transitionModel.startTransform.position, transitionModel.endTransform.position, _transitionProgress);
-        //            transform.rotation = Quaternion.Slerp(transitionModel.startTransform.rotation, transitionModel.endTransform.rotation, _transitionProgress);
-        //            yield return null;
-        //        }
-        //        _transitionProgress = 1.0f;
-        //        _isTransitioning = false;
-        //        GameEvents.TransitionCompleted(_propertyDetails);
-        //    }
-        //}
+        public void ShowAvailability(bool show)
+        {
+            if(!show)
+                _unitsController.gameObject.SetActive(false);
+            else
+                _unitsController.gameObject.SetActive(_propertyDetails.IsAvailable);
+
+        }
+
     }
 }

@@ -18,11 +18,6 @@ namespace AVerse.Controllers.Gameplay
         }
         private Vector3 pos;
 
-        private void OnEnable()
-        {
-
-        }
-
         #region Main Scene Callbacks
         public void OnClick_Reset()
         {
@@ -68,6 +63,10 @@ namespace AVerse.Controllers.Gameplay
             _queryForm.GetComponent<Animator>().SetTrigger(GameConstants.ANIMATION_TRIGGER_CLOSE);
         }
 
+        public void OnClick_ShowUI(bool isEnabled)
+        {
+            GameEvents.ToggleUI(isEnabled);
+        }
         #endregion
 
         #region FloorView Scene Callbacks

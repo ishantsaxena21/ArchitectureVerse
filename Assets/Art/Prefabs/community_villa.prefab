@@ -1304,7 +1304,7 @@ PrefabInstance:
     - target: {fileID: 747147920417565747, guid: bb5520364031941499e432ec206713b6, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: f78a62a46cf9ed64eb2786cf8d2ade6e, type: 2}
+      objectReference: {fileID: 2100000, guid: 0e9a098572db62647b4e70d88aa828a6, type: 2}
     - target: {fileID: 919132149155446097, guid: bb5520364031941499e432ec206713b6, type: 3}
       propertyPath: m_Name
       value: community_villa

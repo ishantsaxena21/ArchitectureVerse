@@ -7,19 +7,20 @@ public class RuntimeCarSelector : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        List<GameObject> childObjects = new List<GameObject>();
-
-        int i = 0;
+        int randomCarIndex = Random.Range(0, transform.childCount);
         // Loop through all child transforms of the parent object
-        foreach (Transform child in this.transform)
+        for(int i=0;i< transform.childCount; i++)
         {
-            i++;
-            childObjects.Add(child.gameObject);
-            child.gameObject.SetActive(false);
+            if(i == randomCarIndex)
+            {
+                transform.GetChild(i).gameObject.SetActive(true);
+            }
+            else
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }            
         }
 
-        childObjects[Random.Range(0,i)].SetActive(true);
-        print($"Total Size: {i}");
     }
 
 }

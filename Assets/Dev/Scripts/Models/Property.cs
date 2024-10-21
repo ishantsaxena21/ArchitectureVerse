@@ -7,12 +7,13 @@ namespace AVerse.Models
     {
         [SerializeField] string _name;
         [SerializeField] string _id;
-        [SerializeField] PropertyType _type;
+        [SerializeField] PropertyType _propertytType;
         [SerializeField] bool _isAvailable;
-        [SerializeField] UnitType type;
+        [SerializeField] UnitSize _unitSize;
         public string Id { get { return _id; } }
         public string Name { get { return _name; } }
-        public PropertyType Type { get { return _type; } }
+        public PropertyType PropertyType { get { return _propertytType; } }
+        public UnitSize UnitSize { get { return _unitSize; } }
         public bool IsAvailable { get { return _isAvailable; } }
 
         private void Awake()
@@ -20,6 +21,8 @@ namespace AVerse.Models
             var available = UnityEngine.Random.Range(0, 2);
             _id = "U" + UnityEngine.Random.Range(0, 1000000) + "" + UnityEngine.Random.Range(0, 1000000);
             _isAvailable = available >= 1 ? true : false ;
+
+            _unitSize = (UnitSize) UnityEngine.Random.Range(4, 7);
         }
     }
 

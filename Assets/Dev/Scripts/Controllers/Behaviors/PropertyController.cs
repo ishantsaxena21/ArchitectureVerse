@@ -32,6 +32,7 @@ namespace AVerse.Controllers.Behaviors
         public BoundaryDrawer BoundingBox { get { return _boundingBox; } }
         public Property PropertyDetails {  get { return _propertyDetails; } }
         public string PropertyId { get { return _propertyDetails.Id; } }
+        public UnitSize UnitSize { get { return _propertyDetails.UnitSize; } }
         public GameObject BuildingParentObject { set { _buildingParentObject = value; } }
         public Transform CameraTransform { get { return _cameraController.transform; } }
 

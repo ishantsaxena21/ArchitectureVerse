@@ -10,24 +10,28 @@ namespace AVerse.Controllers.Gameplay
 {
     public class GameManager : MonoBehaviour
     {
-        Dictionary<string, PropertyController> _allProperties;
+        Dictionary<string, PropertyController> _allPropertiesByPropertyId;
+        Dictionary<UnitSize, List<PropertyController>> _allPropertiesByUnitSize;
         //Dictionary<string, PropertyUnit> _allUnits;
 
         [SerializeField] PropertyController _initialTarget;
-        Property _currentTarget;
-
+        [SerializeField] Property _currentTarget;
+        List<UnitSize> _activeSizeFilters;
 
         private void OnEnable()
         {
-            _allProperties = new Dictionary<string, PropertyController>();
+            _allPropertiesByPropertyId = new Dictionary<string, PropertyController>();
+            _allPropertiesByUnitSize = new Dictionary<UnitSize, List<PropertyController>>();
             //_allUnits = new Dictionary<string, PropertyUnit>();
 
             GameEvents.PropertySelectionChanged += On_PropertySelectionChanged;
             GameEvents.TransitionCompleted += On_TransitionCompleted;
+            GameEvents.FilterSelectorChanged += On_FilterSelectionChange;
         }
 
         private void Start()
         {
+            _activeSizeFilters = new List<UnitSize>();
             var allPropertiesInScen = FindObjectsByType<PropertyController>(FindObjectsSortMode.None);
             CachePropertiesInScene(allPropertiesInScen);
             //var allUnitsInScene = GameObject.FindObjectsByType<PropertyUnit>(FindObjectsSortMode.None);
@@ -43,23 +47,30 @@ namespace AVerse.Controllers.Gameplay
 
             GameEvents.PropertySelectionChanged -= On_PropertySelectionChanged;
             GameEvents.TransitionCompleted -= On_TransitionCompleted;
+            GameEvents.FilterSelectorChanged -= On_FilterSelectionChange;
         }
 
         private void CachePropertiesInScene(PropertyController[] properties)
         {
-            if (_allProperties == null) _allProperties = new Dictionary<string, PropertyController>();
+            if (_allPropertiesByPropertyId == null) _allPropertiesByPropertyId = new Dictionary<string, PropertyController>();
+            if (_allPropertiesByUnitSize == null) _allPropertiesByUnitSize = new Dictionary<UnitSize, List<PropertyController>>();
 
             foreach (var property in properties)
             {
+                _allPropertiesByPropertyId.Add(property.PropertyId, property);
+                if (!_allPropertiesByUnitSize.ContainsKey(property.UnitSize))
+                {
+                    _allPropertiesByUnitSize.Add(property.UnitSize, new List<PropertyController>());
+                }
+                _allPropertiesByUnitSize[property.UnitSize].Add(property);
 
-                _allProperties.Add(property.PropertyId, property);
             }
         }
 
         private void ClearPropertiesCache()
         {
-            _allProperties.Clear();
-            _allProperties = null;
+            _allPropertiesByPropertyId.Clear();
+            _allPropertiesByPropertyId = null;
         }
 
         private void On_PropertySelectionChanged(Property property)
@@ -73,21 +84,19 @@ namespace AVerse.Controllers.Gameplay
             {
                 UIManager.Instance.TriggerUnitDetails(property, false);
             }
-            if (_allProperties.ContainsKey(property.Id))
+            if (_allPropertiesByPropertyId.ContainsKey(property.Id))
             {
-                foreach (var propertyController in _allProperties.Values)
+                _allPropertiesByPropertyId[_currentTarget.Id].UnloadProperty();
+                if (_activeSizeFilters.Count>0 && !_activeSizeFilters.Contains(_currentTarget.UnitSize))
                 {
-                    propertyController.UnloadProperty();
+                    Debug.Log($"Disabling Availabity for Property Id since filter not active: {_currentTarget.Id}");
+                    _allPropertiesByPropertyId[_currentTarget.Id].ShowAvailability(false);
                 }
                 UniversalTranisitionCamera.Instance.StartTransition(
                     _currentTarget.GetComponentInParent<PropertyController>().CameraTransform,
-                    _allProperties[property.Id].CameraTransform);
+                    _allPropertiesByPropertyId[property.Id].CameraTransform);
 
-                //_allProperties[property.Id].StartTransition();
                 _currentTarget = property;
-                //On_TransitionCompleted(property);
-
-                //TODO: _cameraContoller.UpdateTarget(_allProperties[propertyId].BoundingBox.transform);
             }
             else
             {
@@ -98,29 +107,75 @@ namespace AVerse.Controllers.Gameplay
 
         private void On_TransitionCompleted()
         {
-            _allProperties[_currentTarget.Id].LoadProperty();
+            _allPropertiesByPropertyId[_currentTarget.Id].LoadProperty();
 
-            if (_currentTarget.Type == PropertyType.BUILDING)
+            if (_currentTarget.PropertyType == PropertyType.BUILDING)
             {
-                UIManager.Instance.ShowTopFilter(_currentTarget);
+                //UIManager.Instance.ShowTopFilter(_currentTarget);
             }
-            else if (_currentTarget.Type == PropertyType.VILLA)
+            else if (_currentTarget.PropertyType == PropertyType.VILLA)
             {
-                UIManager.Instance.HideTopFilter(_currentTarget);
+                //UIManager.Instance.HideTopFilter(_currentTarget);
             }
         }
 
-        //private void CacheUnitsInScene(PropertyUnit[] units)
-        //{
-        //    if (_allUnits == null) _allUnits = new Dictionary<string, PropertyUnit>();
+        private void On_FilterSelectionChange(UnitSize size)
+        {
+            if (_activeSizeFilters.Count == 0)
+            {
+                foreach (var propertyController in _allPropertiesByPropertyId.Values)
+                {
+                    propertyController.ShowAvailability(false);
+                }
+                ActivateFilter(size);
+                return;
+            }
+            else if (_activeSizeFilters.Contains(size)) {
+                foreach (var property in _allPropertiesByUnitSize[size])
+                {
+                    if (_currentTarget.Id == property.PropertyId)
+                    {
+                        Debug.Log("Not Actiavting Currently Selected Property");
+                        continue;
+                    }
+                    property.ShowAvailability(false);
+                }
 
-        //    foreach (var unit in units) _allUnits.Add(unit.PropertyUnitId, unit);
-        //}
-        //private void ClearUnitsCache()
-        //{
-        //    _allUnits.Clear();
-        //    _allUnits = null;
-        //}
+                _activeSizeFilters.Remove(size);
+                
+                if (_activeSizeFilters.Count == 0)
+                {
+                    foreach (var property in _allPropertiesByPropertyId.Values)
+                    {
+                        if (_currentTarget.Id == property.PropertyId)
+                        {
+                            Debug.Log("Not Actiavting Currently Selected Property");
+                            continue;
+                        }
+                        property.ShowAvailability(true);
+                    }
+                }
+            }
+            else
+            {
+                ActivateFilter(size);
+                return;
+            }
+           
+        }
 
+        private void ActivateFilter(UnitSize size)
+        {
+            _activeSizeFilters.Add(size);
+            foreach (var property in _allPropertiesByUnitSize[size])
+            {
+                if (_currentTarget.Id == property.PropertyId)
+                {
+                    Debug.Log("Not Actiavting Currently Selected Property");
+                    continue;
+                }
+                property.ShowAvailability(true);
+            }
+        }
     }
 }

@@ -14,7 +14,7 @@ namespace AVerse.UI{
 
         Sprite _lastImage;
         Button _button;
-        bool _isSelected = false;
+        bool _isSelected = false;        
 
         protected void Start(){
             _button = GetComponent<Button>();

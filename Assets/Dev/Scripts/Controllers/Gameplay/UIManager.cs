@@ -67,6 +67,12 @@ namespace AVerse.Controllers.Gameplay
         {
             GameEvents.ToggleUI(isEnabled);
         }
+
+        public void OnClick_UnitTypeFilterSelected(int selectedSize)
+        {
+            Debug.Log($"Filter Clicked for {selectedSize} : {(UnitSize)selectedSize}");
+            GameEvents.FilterSelectorChanged((UnitSize)selectedSize);
+        }
         #endregion
 
         #region FloorView Scene Callbacks

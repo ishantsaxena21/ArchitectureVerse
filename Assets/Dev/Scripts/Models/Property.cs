@@ -9,6 +9,7 @@ namespace AVerse.Models
         [SerializeField] string _id;
         [SerializeField] PropertyType _type;
         [SerializeField] bool _isAvailable;
+        [SerializeField] UnitType type;
         public string Id { get { return _id; } }
         public string Name { get { return _name; } }
         public PropertyType Type { get { return _type; } }
